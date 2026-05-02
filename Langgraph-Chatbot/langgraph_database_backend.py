@@ -45,16 +45,3 @@ graph.add_edge('chat_node', END)
 basic_chatbot_workflow = graph.compile(checkpointer=checkpointer)
 
 
-# test
-
-# Define config type properly
-class ChatConfig(TypedDict):
-    configurable: dict[str, str]
-
-config: ChatConfig = {"configurable": {"thread_id": 'thread-1'}}
-
-response = basic_chatbot_workflow.invoke(
-    {'messages': [HumanMessage(content='What is my name?')]},
-                config = config
-)
-print(response)
